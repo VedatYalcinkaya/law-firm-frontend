@@ -11,6 +11,7 @@ import IcraHukukuPage from "./IcraHukukuPage";
 import CezaHukukuPage from "./CezaHukukuPage";
 import PublishingArticlePage from "./PublishingArticlePage";
 import ArticlesPage from "./ArticlesPage";
+import ArticleDetailsPage from "./ArticleDetailsPage";
 
 
 
@@ -34,6 +35,7 @@ function Dashboard() {
                     <Route path="/ceza-hukuku" element={<CezaHukukuPage/>} />
                     <Route path="/makaleler" element={<ArticlesPage/>} />
                     <Route path="/publish-article" element={<PublishingArticlePage/>} />
+                    <Route path="/makale/:id" element={<ArticleDetailsPage />} />
 
                     {/* <Route path="/skills" element={<SkillsPage />} /> */}
                     <Route path="/contact" element={<ContactPage />} />

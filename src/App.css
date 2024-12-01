@@ -1,4 +1,35 @@
 .image-crop {
   clip-path: ellipse(50% 75% at 50% 50%);
 }
-  
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: bold;
+
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid  /* Alt çizgi ile belirginleştirin */
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
