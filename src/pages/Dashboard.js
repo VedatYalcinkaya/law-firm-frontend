@@ -12,6 +12,8 @@ import CezaHukukuPage from "./CezaHukukuPage";
 import PublishingArticlePage from "./PublishingArticlePage";
 import ArticlesPage from "./ArticlesPage";
 import ArticleDetailsPage from "./ArticleDetailsPage";
+import Login from "../components/Login";
+import LoginPage from "./LoginPage";
 
 
 
@@ -30,6 +32,7 @@ function Dashboard() {
             <div className="relative z-10 pt-32">
                 <Routes>
                     <Route path="/" element={<HomePage />} />
+                    <Route path="/login" element={<LoginPage />} />
                     <Route path="/about" element={<AboutUsPage/>} /> 
                     <Route path="/icra-hukuku" element={<IcraHukukuPage/>} />
                     <Route path="/ceza-hukuku" element={<CezaHukukuPage/>} />
