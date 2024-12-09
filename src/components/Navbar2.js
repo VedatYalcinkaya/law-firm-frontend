@@ -1,9 +1,46 @@
 import React, { useEffect, useState } from "react";
 import logo from "../assets/images/avukat-logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import tokenService from "../services/tokenService";
+import { useDispatch, useSelector } from "react-redux";
+import { isSignedIn, logout } from "../store/slices/signInSlice";
+
 
 function Navbar2() {
+  const dispatch = useDispatch();
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const isSignedInRedux = useSelector((state) => state.signIn.isSignedIn);
+  // const [isSignedInLocal, setIsSignedInLocal] = useState(
+  //   localStorage.getItem("isSignedIn") === "true"
+  // );
+
+  // useEffect(() => {
+  //   setIsSignedInLocal(localStorage.getItem("isSignedIn") === "true");
+  // }, [isSignedInRedux]);
+
+  // useEffect(() => {
+  //   const handleStorageChange = () => {
+  //     const isLoggedIn = localStorage.getItem("isSignedIn") === "true";
+  //     dispatch(isSignedIn(isLoggedIn));
+  //   };
+  
+  //   // Storage değişikliklerini dinle
+  //   window.addEventListener("storage", handleStorageChange);
+  
+  //   // Cleanup
+  //   return () => {
+  //     window.removeEventListener("storage", handleStorageChange);
+  //   };
+  // }, [dispatch]);
+
+  const handleLogout = () => {
+    // LocalStorage'dan verileri temizle
+    dispatch(logout()); // Redux state'i temizle ve localStorage'dan "isSignedIn"i kaldır
+  tokenService.logout(); // Token'i temizle
+  navigate("/");
+  };
 
   useEffect(() => {
     const burger = document.querySelectorAll(".navbar-burger");
@@ -52,11 +89,11 @@ function Navbar2() {
             <img
               className="custom-logo my-4 h-24"
               src={logo}
-              alt="Demirci Hukuk Bürosu Logo"
+              alt="Cindemir Hukuk Bürosu Logo"
             />
             <div className="flex flex-col text-center">
               <span className="text-2xl font-josefin font-bold text-fifth lg:me-28">
-                Demirci Hukuk Bürosu
+                Cindemir Hukuk Bürosu
               </span>
             </div>
           </div>
@@ -137,6 +174,16 @@ function Navbar2() {
             >
               İletişim
             </Link>
+
+             {/* Çıkış Yap Butonu */}
+             {isSignedInRedux && (
+              <button
+                onClick={handleLogout}
+                className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+              >
+                Çıkış Yap
+              </button>
+            )}
           </div>
 
           {/* Hamburger Menüsü */}
@@ -163,7 +210,7 @@ function Navbar2() {
               <img
                 className="custom-logo scale-50 mx-0"
                 src={logo}
-                alt="Demirci Hukuk Bürosu Logo"
+                alt="Cindemir Hukuk Bürosu Logo"
               />
             </a>
             <button className="navbar-close">
@@ -225,14 +272,16 @@ function Navbar2() {
                   İletişim
                 </Link>
               </li>
+              {isSignedInRedux && (
               <li className="mb-1">
-                <Link
-                  className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded"
-                  to="/appointment"
+                <button
+                  onClick={handleLogout}
+                  className="block p-4 text-sm bg-red-400 font-semibold text-white hover:bg-red-500 hover:text-blue-white rounded"
                 >
-                  Randevu Al
-                </Link>
+                  Çıkış Yap
+                </button>
               </li>
+              )}
             </ul>
           </div>
           <div className="mt-auto">

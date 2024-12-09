@@ -1,7 +1,8 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { isSignedIn, postSignIn } from "../store/slices/signInSlice";
 import authService from "../services/authService";
 import tokenService from "../services/tokenService";
@@ -10,7 +11,7 @@ import { toast } from "react-toastify";
 const SignIn = ({ closeSignInDrawer }) => {
   const initialValues = { email: "", password: "" };
   const dispatch = useDispatch();
-  useSelector((state) => state.getUserByEmail.data?.id);
+  const navigate = useNavigate(); // useNavigate hook'u ile yönlendirme yapacağız
 
   // Formik validation schema
   const validationSchema = Yup.object({
@@ -25,18 +26,29 @@ const SignIn = ({ closeSignInDrawer }) => {
     try {
       console.log(values);
       // Dispatch sign-in request to Redux store
-      await dispatch(postSignIn(values));
+      const response = await dispatch(postSignIn(values)).unwrap();
       // Authenticate and get JWT token
-      await authService.authenticate(values);
-      // Decode the token to get user information
-      const decodedToken = tokenService.decodeToken();
-      if (!decodedToken?.sub) {
+      const token = response.token;
+
+      if (!token) {
         toast.error("Hatalı email veya şifre!");
-      } else {
-        toast.success("Başarıyla giriş yapıldı!");
-        dispatch(isSignedIn(true));
-        resetForm();
+        return;
       }
+
+      // Token'i alıp kaydediyoruz
+      tokenService.setToken(token);
+
+      // Toast mesajı
+      toast.success("Başarıyla giriş yapıldı!");
+
+      // Redux state güncellemesi
+      dispatch(isSignedIn(true));
+      
+      // Admin paneline yönlendirme
+      navigate("/admin");
+
+      // Form'u sıfırlama
+      resetForm();
     } catch (error) {
       toast.error("Giriş sırasında bir hata oluştu");
     }

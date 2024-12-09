@@ -10,13 +10,13 @@ function AboutUs() {
         <div className="container mx-auto flex flex-col md:flex-row items-center my-12 md:my-24">
           <div className="flex flex-col w-full lg:w-1/3 justify-center items-start p-8">
             <h1 className="text-3xl md:text-5xl p-2 text-fourth tracking-loose">
-              Demirci Hukuk Bürosu
+              Cindemir Hukuk Bürosu
             </h1>
             <h2 className="text-3xl text-fifth md:text-5xl leading-relaxed md:leading-snug mb-2">
               Güvenilir ve Profesyonel Hukuk Hizmetleri
             </h2>
             <p className="text-sm md:text-base text-gray-50 mb-4">
-              Demirci Hukuk Bürosu olarak müvekkillerimize en kaliteli hukuki
+              Cindemir Hukuk Bürosu olarak müvekkillerimize en kaliteli hukuki
               danışmanlık ve temsil hizmetlerini sunuyoruz. Güven,
               profesyonellik ve mükemmellik ilkeleriyle hareket ederek her zaman
               yanınızdayız.

@@ -6,6 +6,9 @@ import getArticleByIdSlice from "./slices/getArticleByIdSlice";
 import { setStore } from "../utils/interceptors/axiosInterceptor";
 import getUserByEmailSlice from "./slices/getUserByEmailSlice";
 import signInSlice from "./slices/signInSlice"
+import  deleteArticleSlice  from "./slices/deleteArticleSlice";
+import  updateArticleSlice  from "./slices/updateArticleSlice";
+
 
 export const store = configureStore({
   reducer: {
@@ -15,6 +18,8 @@ export const store = configureStore({
     articleDetails: getArticleByIdSlice,
     getUserByEmail:getUserByEmailSlice,
     signIn:signInSlice,
+    deleteArticle:deleteArticleSlice,
+    updateArticle:updateArticleSlice,
 
   },
 });

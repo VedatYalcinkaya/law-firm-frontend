@@ -9,9 +9,9 @@ function OurServices() {
         <div className="container mx-auto flex flex-col items-start md:flex-row my-12 md:my-24">
           <div className="flex flex-col w-full sticky md:top-36 lg:w-1/3 mt-2 md:mt-12 px-8">
             <p className="ml-2 text-fifth uppercase tracking-loose">HİZMET SÜRECİ</p>
-            <p className="text-3xl md:text-4xl text-fifth leading-normal md:leading-relaxed mb-2">Demirci Hukuk Bürosu Hizmet Süreci</p>
+            <p className="text-3xl md:text-4xl text-fifth leading-normal md:leading-relaxed mb-2">Cindemir Hukuk Bürosu Hizmet Süreci</p>
             <p className="text-sm md:text-base text-gray-50 mb-4">
-              Demirci Hukuk Bürosu olarak hizmetlerimizi adım adım takip ederek en doğru şekilde ilerlemenizi sağlıyoruz. Sürecin tüm aşamalarını öğrenmek için adımları takip edebilirsiniz.
+              Cindemir Hukuk Bürosu olarak hizmetlerimizi adım adım takip ederek en doğru şekilde ilerlemenizi sağlıyoruz. Sürecin tüm aşamalarını öğrenmek için adımları takip edebilirsiniz.
             </p>
             <a
               href="#"
@@ -77,7 +77,7 @@ function OurServices() {
               <img
                 className="mx-auto h-48 -mt-8 md:-mt-8 "
                 src={logo}
-                alt="Demirci Hukuk Bürosu Logo"
+                alt="Cindemir Hukuk Bürosu Logo"
               />
             </div>
           </div>

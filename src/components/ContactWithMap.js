@@ -31,7 +31,7 @@ const ContactWithMap = () => {
                   <textarea className="peer block min-h-[auto] w-full rounded border-2 bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100" id="exampleFormControlTextarea1" rows="3"></textarea>
                   <label htmlFor="exampleFormControlTextarea1" className="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8]">Mesaj</label>
                 </div>
-                <button type="button" className="mb-6 w-full rounded bg-sky-500 text-white px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal lg:mb-0">Send</button>
+                <button type="button" className="mb-6 w-full rounded bg-sky-500 text-white px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal lg:mb-0">Gönder</button>
               </form>
             </div>
             <div className="w-full shrink-0 grow-0 basis-auto lg:w-7/12">
@@ -47,7 +47,7 @@ const ContactWithMap = () => {
                     </div>
                     <div className="ml-6 grow">
                       <p className="mb-2 font-bold">Bize Ulaşın</p>
-                      <p className="text-sm text-neutral-500">info@demirciyazilim.com</p>
+                      <p className="text-sm text-neutral-500">info@Cindemiryazilim.com</p>
                       <p className="text-sm text-neutral-500">+90 545 310 74 69</p>
                     </div>
                   </div>

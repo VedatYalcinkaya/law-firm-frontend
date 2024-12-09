@@ -6,14 +6,15 @@ import HomePage from "./HomePage";
 import Footer from "../components/Footer";
 import AboutUsPage from "./AboutUsPage";
 import ContactPage from "./ContactPage";
-import IcraHukuku from "../components/IcraHukuku";
 import IcraHukukuPage from "./IcraHukukuPage";
 import CezaHukukuPage from "./CezaHukukuPage";
 import PublishingArticlePage from "./PublishingArticlePage";
 import ArticlesPage from "./ArticlesPage";
 import ArticleDetailsPage from "./ArticleDetailsPage";
-import Login from "../components/Login";
 import LoginPage from "./LoginPage";
+import AdminDashboard from "./AdminPages/AdminDashboard";
+import ManageArticles from "./AdminPages/ManageArticle";
+import EditArticlePage from "./EditArticlePage";
 
 
 
@@ -33,11 +34,17 @@ function Dashboard() {
                 <Routes>
                     <Route path="/" element={<HomePage />} />
                     <Route path="/login" element={<LoginPage />} />
+                    <Route path="/admin" element={<AdminDashboard />} />
                     <Route path="/about" element={<AboutUsPage/>} /> 
                     <Route path="/icra-hukuku" element={<IcraHukukuPage/>} />
                     <Route path="/ceza-hukuku" element={<CezaHukukuPage/>} />
                     <Route path="/makaleler" element={<ArticlesPage/>} />
-                    <Route path="/publish-article" element={<PublishingArticlePage/>} />
+                    <Route path="/admin/publish-article" element={<PublishingArticlePage/>} />
+                    <Route path="admin/manage-articles" element={<ManageArticles/>}/>
+                    <Route path="/admin/edit-article/:id" element={<EditArticlePage />} /> {/* Yeni Route */}
+                    {/* <Route path="admin/edit-article" element={<ManageArticles/>}/> */}
+
+                    
                     <Route path="/makale/:id" element={<ArticleDetailsPage />} />
 
                     {/* <Route path="/skills" element={<SkillsPage />} /> */}

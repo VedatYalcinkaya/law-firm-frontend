@@ -11,7 +11,7 @@ class TokenService {
 
     logout() {
         localStorage.removeItem("token");
-        localStorage.removeItem("user");
+        localStorage.removeItem("isSignedIn");
     }
 
     decodeToken() {
