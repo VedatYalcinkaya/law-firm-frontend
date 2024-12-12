@@ -1,5 +1,5 @@
 import React from 'react'
-import CezaHukuku from '../components/CezaHukuku'
+import CezaHukuku from '../components/LegalContentDetails'
 
 const CezaHukukuPage = () => {
   return (

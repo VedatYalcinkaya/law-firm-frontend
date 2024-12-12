@@ -2,6 +2,7 @@ import React from "react";
 import bookImage from "../assets/images/books.png";
 import teraziImage from "../assets/images/terazi.png";
 import personImage from "../assets/images/AboutUsPerson.png";
+import { Link } from "react-router-dom";
 
 function AboutUs() {
   return (
@@ -21,12 +22,12 @@ function AboutUs() {
               profesyonellik ve mükemmellik ilkeleriyle hareket ederek her zaman
               yanınızdayız.
             </p>
-            <a
-              href="#"
+            <Link
+              to="/hakkimizda"
               className="bg-transparent hover:bg-fifth text-fifth hover:text-black shadow hover:shadow-lg py-2 px-4 border border-fifth hover:border-transparent"
             >
               Daha Fazla Bilgi Edinin
-            </a>
+            </Link>
           </div>
           <div className="p-8 mt-12 mb-6 md:mb-0 md:mt-0 ml-0 md:ml-12 md:w-2/3 flex justify-center">
             <div className="grid grid-cols-3 md:grid-cols-1 lg:grid-cols-3 gap-8 items-center">

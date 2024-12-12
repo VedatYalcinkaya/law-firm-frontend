@@ -4,12 +4,21 @@ import { Link, useNavigate } from "react-router-dom";
 import tokenService from "../services/tokenService";
 import { useDispatch, useSelector } from "react-redux";
 import { isSignedIn, logout } from "../store/slices/signInSlice";
-
+import { getAllLegalContents } from "../store/slices/getAllLegalContentsSlice";
 
 function Navbar2() {
   const dispatch = useDispatch();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const navigate = useNavigate();
+
+  const { legalContents, loading, error } = useSelector(
+    (state) => state.getAllLegalContents
+  );
+
+  useEffect(() => {
+    // LegalContent'ları API'den çek
+    dispatch(getAllLegalContents());
+  }, [dispatch]);
 
   const isSignedInRedux = useSelector((state) => state.signIn.isSignedIn);
   // const [isSignedInLocal, setIsSignedInLocal] = useState(
@@ -25,10 +34,10 @@ function Navbar2() {
   //     const isLoggedIn = localStorage.getItem("isSignedIn") === "true";
   //     dispatch(isSignedIn(isLoggedIn));
   //   };
-  
+
   //   // Storage değişikliklerini dinle
   //   window.addEventListener("storage", handleStorageChange);
-  
+
   //   // Cleanup
   //   return () => {
   //     window.removeEventListener("storage", handleStorageChange);
@@ -38,8 +47,8 @@ function Navbar2() {
   const handleLogout = () => {
     // LocalStorage'dan verileri temizle
     dispatch(logout()); // Redux state'i temizle ve localStorage'dan "isSignedIn"i kaldır
-  tokenService.logout(); // Token'i temizle
-  navigate("/");
+    tokenService.logout(); // Token'i temizle
+    navigate("/");
   };
 
   useEffect(() => {
@@ -107,7 +116,7 @@ function Navbar2() {
               Ana Sayfa
             </Link>
             <Link
-              to="/about"
+              to="hakkimizda"
               className="block text-xl text-secondary font-josefin font-bold hover:text-fifth hover:scale-125 transition-transform duration-300 ease-in-out"
             >
               Hakkımızda
@@ -121,44 +130,28 @@ function Navbar2() {
                 Çalışma Alanlarımız
               </button>
               <div
-                className={`absolute ${dropdownOpen ? "block" : "hidden"} bg-white shadow-lg rounded mt-0 w-48`}
+                className={`absolute ${
+                  dropdownOpen ? "block" : "hidden"
+                } bg-white shadow-lg rounded mt-0 w-48`}
               >
                 <ul className="py-2">
-                  <li>
-                    <Link to="/icra-hukuku" className="block px-4 py-2 text-secondary hover:bg-gray-200">
-                      İcra Hukuku
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/ceza-hukuku" className="block px-4 py-2 text-secondary hover:bg-gray-200">
-                      Ceza Hukuku
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/services/aile-hukuku" className="block px-4 py-2 text-secondary hover:bg-gray-200">
-                      Aile Hukuku
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/services/ticaret-hukuku" className="block px-4 py-2 text-secondary hover:bg-gray-200">
-                      Ticaret Hukuku
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/services/borclar-hukuku" className="block px-4 py-2 text-secondary hover:bg-gray-200">
-                      Borçlar Hukuku
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/services/is-hukuku" className="block px-4 py-2 text-secondary hover:bg-gray-200">
-                      İş Hukuku
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/services/sozlesme-hukuku" className="block px-4 py-2 text-secondary hover:bg-gray-200">
-                      Sözleşme Hukuku
-                    </Link>
-                  </li>
+                  {loading && (
+                    <li className="px-4 py-2 text-gray-500">Yükleniyor...</li>
+                  )}
+                  {error && (
+                    <li className="px-4 py-2 text-red-500">Hata: {error}</li>
+                  )}
+                  {legalContents &&
+                    legalContents.map((content) => (
+                      <li key={content.id}>
+                        <Link
+                          to={`/calisma-alani/${content.id}`}
+                          className="block px-4 py-2 text-secondary hover:bg-gray-200"
+                        >
+                          {content.title}
+                        </Link>
+                      </li>
+                    ))}
                 </ul>
               </div>
             </div>
@@ -169,14 +162,14 @@ function Navbar2() {
               Makaleler
             </Link>
             <Link
-              to="/contact"
+              to="/iletisim"
               className="block text-xl text-secondary font-josefin font-bold hover:text-fifth hover:scale-125 transition-transform duration-300 ease-in-out"
             >
               İletişim
             </Link>
 
-             {/* Çıkış Yap Butonu */}
-             {isSignedInRedux && (
+            {/* Çıkış Yap Butonu */}
+            {isSignedInRedux && (
               <button
                 onClick={handleLogout}
                 className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
@@ -243,7 +236,7 @@ function Navbar2() {
               <li className="mb-1">
                 <Link
                   className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded"
-                  to="/about"
+                  to="hakkimizda"
                 >
                   Hakkımızda
                 </Link>
@@ -267,20 +260,20 @@ function Navbar2() {
               <li className="mb-1">
                 <Link
                   className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded"
-                  to="/contact"
+                  to="/iletisim"
                 >
                   İletişim
                 </Link>
               </li>
               {isSignedInRedux && (
-              <li className="mb-1">
-                <button
-                  onClick={handleLogout}
-                  className="block p-4 text-sm bg-red-400 font-semibold text-white hover:bg-red-500 hover:text-blue-white rounded"
-                >
-                  Çıkış Yap
-                </button>
-              </li>
+                <li className="mb-1">
+                  <button
+                    onClick={handleLogout}
+                    className="block p-4 text-sm bg-red-400 font-semibold text-white hover:bg-red-500 hover:text-blue-white rounded"
+                  >
+                    Çıkış Yap
+                  </button>
+                </li>
               )}
             </ul>
           </div>

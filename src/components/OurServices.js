@@ -1,5 +1,6 @@
 import React from "react";
 import logo from "../assets/images/avukat-logo.png";
+import { Link } from "react-router-dom";
 
 function OurServices() {
   return (
@@ -13,12 +14,12 @@ function OurServices() {
             <p className="text-sm md:text-base text-gray-50 mb-4">
               Cindemir Hukuk Bürosu olarak hizmetlerimizi adım adım takip ederek en doğru şekilde ilerlemenizi sağlıyoruz. Sürecin tüm aşamalarını öğrenmek için adımları takip edebilirsiniz.
             </p>
-            <a
-              href="#"
+            <Link
+              to="/iletisim"
               className="bg-transparent mr-auto hover:bg-fifth text-fifth hover:text-third rounded shadow hover:shadow-lg py-2 px-4 border border-fifth hover:border-transparent"
             >
               Şimdi Randevu Alın
-            </a>
+            </Link>
           </div>
           <div className="ml-0 md:ml-12 lg:w-2/3 sticky">
             <div className="container mx-auto w-full h-full">

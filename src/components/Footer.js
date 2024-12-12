@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import logo from "../assets/images/avukat-logo.png";
 
 function Footer() {
@@ -41,10 +42,10 @@ function Footer() {
                     <h2 className="mb-3 text-sm font-medium tracking-widest text-secondary uppercase title-font">Hakkımızda</h2>
                     <nav className="list-none">
                         <li className="mt-3">
-                            <a className="text-fifth cursor-pointer hover:text-secondary">Hukuk Bürosu</a>
+                            <Link to="hakkimizda" className="text-fifth cursor-pointer hover:text-secondary">Misyonumuz</Link>
                         </li>
                         <li className="mt-3">
-                            <a className="text-fifth cursor-pointer hover:text-secondary">Hizmetlerimiz</a>
+                            <Link to="/makaleler" className="text-fifth cursor-pointer hover:text-secondary">Makaleler</Link>
                         </li>
                     </nav>
                 </div>
@@ -54,10 +55,10 @@ function Footer() {
                     <h2 className="mb-3 text-sm font-medium tracking-widest text-secondary uppercase title-font">İletişim</h2>
                     <nav className="list-none">
                         <li className="mt-3">
-                            <a className="text-fifth cursor-pointer hover:text-secondary">Mesaj Gönder</a>
+                            <Link to="/iletisim" className="text-fifth cursor-pointer hover:text-secondary">Mesaj Gönder</Link>
                         </li>
                         <li className="mt-3">
-                            <a className="text-fifth cursor-pointer hover:text-secondary">+90 555 555 5555</a>
+                            <a className="text-fifth cursor-pointer hover:text-secondary">0 530 885 22 04</a>
                         </li>
                     </nav>
                 </div>

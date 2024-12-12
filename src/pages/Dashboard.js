@@ -1,6 +1,5 @@
 import backgroundImage from "../assets/images/backgroundImage.jpg";
 import { Routes, Route } from "react-router-dom";
-// import StickyNavbar from "../components/StickyNavbar";
 import Navbar2 from "../components/Navbar2";
 import HomePage from "./HomePage";
 import Footer from "../components/Footer";
@@ -12,9 +11,12 @@ import PublishingArticlePage from "./PublishingArticlePage";
 import ArticlesPage from "./ArticlesPage";
 import ArticleDetailsPage from "./ArticleDetailsPage";
 import LoginPage from "./LoginPage";
-import AdminDashboard from "./AdminPages/AdminDashboard";
 import ManageArticles from "./AdminPages/ManageArticle";
 import EditArticlePage from "./EditArticlePage";
+import NotFoundPage from "./NotFoundPage";
+import AddLegalContentPage from "./AddLegalContentPage";
+import LegalContentDetailsPage from "./LegalContentDetailsPage";
+import EditLegalContentPage from "./EditLegalContentPage";
 
 
 
@@ -34,21 +36,21 @@ function Dashboard() {
                 <Routes>
                     <Route path="/" element={<HomePage />} />
                     <Route path="/login" element={<LoginPage />} />
-                    <Route path="/admin" element={<AdminDashboard />} />
-                    <Route path="/about" element={<AboutUsPage/>} /> 
+                    <Route path="hakkimizda" element={<AboutUsPage/>} /> 
                     <Route path="/icra-hukuku" element={<IcraHukukuPage/>} />
                     <Route path="/ceza-hukuku" element={<CezaHukukuPage/>} />
                     <Route path="/makaleler" element={<ArticlesPage/>} />
                     <Route path="/admin/publish-article" element={<PublishingArticlePage/>} />
+                    <Route path="/admin/calisma-alani-ekle" element={<AddLegalContentPage/>} />
                     <Route path="admin/manage-articles" element={<ManageArticles/>}/>
-                    <Route path="/admin/edit-article/:id" element={<EditArticlePage />} /> {/* Yeni Route */}
-                    {/* <Route path="admin/edit-article" element={<ManageArticles/>}/> */}
+                    <Route path="/admin/edit-article/:id" element={<EditArticlePage />} /> 
+                    <Route path="/admin/calisma-alani-duzenle/:id" element={<EditLegalContentPage />} /> 
 
-                    
                     <Route path="/makale/:id" element={<ArticleDetailsPage />} />
-
-                    {/* <Route path="/skills" element={<SkillsPage />} /> */}
-                    <Route path="/contact" element={<ContactPage />} />
+                    <Route path="/calisma-alani/:id" element={<LegalContentDetailsPage />} />
+                    <Route path="/iletisim" element={<ContactPage />} />
+                    {/* 404 Sayfası */}
+        <           Route path="*" element={<NotFoundPage />} />
                 </Routes>
             </div>
             <Footer/>

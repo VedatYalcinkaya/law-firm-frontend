@@ -45,7 +45,7 @@ const SignIn = ({ closeSignInDrawer }) => {
       dispatch(isSignedIn(true));
       
       // Admin paneline yönlendirme
-      navigate("/admin");
+      navigate("/makaleler");
 
       // Form'u sıfırlama
       resetForm();
