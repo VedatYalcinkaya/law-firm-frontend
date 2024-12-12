@@ -15,7 +15,7 @@ export const setStore = (_store) => {
 
 // Axios instancemizi oluşturuyoruz
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:8080/api/", // Backend API'nin temel URL'sini burada belirtiyoruz
+  baseURL: "http://46.202.155.249:8080/api/", // Backend API'nin temel URL'sini burada belirtiyoruz
 });
 
 // İstek öncesi yapılacak işlemler

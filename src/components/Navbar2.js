@@ -242,13 +242,55 @@ function Navbar2() {
                 </Link>
               </li>
               <li className="mb-1">
-                <Link
-                  className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded"
-                  to="/services"
+                <button
+                  onClick={() => setDropdownOpen(!dropdownOpen)}
+                  className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded w-full text-left"
                 >
-                  Hizmetler
-                </Link>
+                  Çalışma Alanlarımız
+                  <svg
+                    className={`w-4 h-4 inline-block ml-2 transform ${
+                      dropdownOpen ? "rotate-180" : ""
+                    } transition-transform`}
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M5 15l7-7 7 7"
+                    />
+                  </svg>
+                </button>
+                {dropdownOpen && (
+                  <ul className="pl-4 mt-2">
+                    {loading && (
+                      <li className="text-gray-500 text-sm px-4">
+                        Yükleniyor...
+                      </li>
+                    )}
+                    {error && (
+                      <li className="text-red-500 text-sm px-4">
+                        Hata: {error}
+                      </li>
+                    )}
+                    {legalContents &&
+                      legalContents.map((content) => (
+                        <li key={content.id} className="mb-1">
+                          <Link
+                            to={`/calisma-alani/${content.id}`}
+                            className="block p-2 text-sm text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded"
+                          >
+                            {content.title}
+                          </Link>
+                        </li>
+                      ))}
+                  </ul>
+                )}
               </li>
+
               <li className="mb-1">
                 <Link
                   className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded"

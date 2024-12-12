@@ -7,7 +7,7 @@ class AuthService {
     try {
       // Backend'deki auth endpoint'ine istek gönderiyoruz
       const response = await axios.post(
-        "http://localhost:8080/api/auth/authenticate",
+        "http://46.202.155.249:8080/api/auth/authenticate",
         credentials
       );
       const token = response.data.token;
